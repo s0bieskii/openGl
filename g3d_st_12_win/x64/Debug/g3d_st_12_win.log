@@ -1,9 +1,0 @@
-﻿  main_file.cpp
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         with
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         [
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:             _Ty=unsigned int
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         ]
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(152,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(173,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
-  g3d_st_12_win.vcxproj -> D:\Patryk\Julka projekt 3d\openGl\x64\Debug\g3d_st_12_win.exe
