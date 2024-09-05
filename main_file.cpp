@@ -8,6 +8,7 @@
 #include <glm/glm.hpp>
 #include <glm/gtc/matrix_transform.hpp>  // For view and projection matrices
 #include <glm/gtc/type_ptr.hpp>          // For converting matrices to pointers
+#include <shaderprogram.cpp>
 
 struct Vertex {
     glm::vec3 position;
@@ -144,6 +145,9 @@ int main() {
 
     GLuint VAO = createMesh(vertices, indices);
 
+    GLuint shaderProgram = createShaderProgram("v_simplest.glsl", "f_simplest.glsl");
+    glUseProgram(shaderProgram);
+
     // Projection matrix (Field of View, Aspect Ratio, Near Plane, Far Plane)
     glm::mat4 projection = glm::perspective(glm::radians(45.0f), 800.0f / 600.0f, 0.1f, 100.0f);
 
@@ -167,7 +171,16 @@ int main() {
         // In a real scenario, you would use these matrices in your shader
         // For simplicity, we'll just render the object
 
-        // Bind the VAO and draw the object
+        glUseProgram(shaderProgram);
+
+        GLint modelLoc = glGetUniformLocation(shaderProgram, "model");
+        GLint viewLoc = glGetUniformLocation(shaderProgram, "view");
+        GLint projLoc = glGetUniformLocation(shaderProgram, "projection");
+
+        glUniformMatrix4fv(modelLoc, 1, GL_FALSE, glm::value_ptr(model));
+        glUniformMatrix4fv(viewLoc, 1, GL_FALSE, glm::value_ptr(view));
+        glUniformMatrix4fv(projLoc, 1, GL_FALSE, glm::value_ptr(projection));
+
         glBindVertexArray(VAO);
         // Here, typically, you'd pass model, view, projection matrices to the shader
         glDrawElements(GL_TRIANGLES, indices.size(), GL_UNSIGNED_INT, 0);

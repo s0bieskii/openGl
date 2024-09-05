@@ -1,38 +1,19 @@
-#version 330
+#version 330 core
+layout(location = 0) in vec3 aPos;
+layout(location = 1) in vec2 aTexCoord;
+layout(location = 2) in vec3 aNormal;
 
-//Zmienne jednorodne
-uniform mat4 P;
-uniform mat4 V;
-uniform mat4 M;
+uniform mat4 model;
+uniform mat4 view;
+uniform mat4 projection;
 
+out vec2 TexCoord;
+out vec3 FragPos;
+out vec3 Normal;
 
-//Atrybuty
-in vec4 vertex; //wspolrzedne wierzcholka w przestrzeni modelu
-in vec4 color; //kolor związany z wierzchołkiem
-in vec4 normal; //wektor normalny w przestrzeni modelu
-in vec2 texCoord0;
-in vec4 C1;
-in vec4 C2;
-in vec4 C3;
-
-//Zmienne interpolowane
-out vec4 ic;
-out vec4 l;
-out vec4 v;
-out vec2 iTexCoord0;
-
-
-void main(void) {
-    vec4 lp = vec4(0, 0, -6, 1); //przestrzeń świata
-
-    mat4 MTBN = mat4(C1,C2,C3,vec4(0,0,0,1));
-
-    l = normalize(MTBN*inverse(M)*lp - MTBN*vertex); //wektor do światła w przestrzeni oka
-    v = normalize(MTBN*inverse(V*M)*vec4(0, 0, 0, 1) - MTBN*vertex); //wektor do obserwatora w przestrzeni oka
-
-    iTexCoord0 = texCoord0;
-    
-    ic = color;
-    
-    gl_Position=P*V*M*vertex;
+void main() {
+    FragPos = vec3(model * vec4(aPos, 1.0));
+    Normal = mat3(transpose(inverse(model))) * aNormal; // Correct normal for model scaling
+    TexCoord = aTexCoord;
+    gl_Position = projection * view * vec4(FragPos, 1.0);
 }
