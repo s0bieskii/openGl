@@ -1,2 +1,9 @@
-﻿glew32s.lib(glew.obj) : warning LNK4099: nie znaleziono pliku PDB „” z elementem „glew32s.lib(glew.obj)” lub w pozycji „”; obiekt zostanie skonsolidowany bez informacji debugowania
-  g3d_st_12_win.vcxproj -> C:\Users\Julia\Desktop\Bioinformatyka\III rok\Grafika komputerowa 3D\lab 12 i 13\g3d_st_12_win\x64\Debug\g3d_st_12_win.exe
+﻿  main_file.cpp
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267: 'argument': conversion from 'size_t' to '_Ty', possible loss of data
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         with
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         [
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:             _Ty=unsigned int
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(62,47): warning C4267:         ]
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(152,28): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+D:\Patryk\Julka projekt 3d\openGl\main_file.cpp(173,50): warning C4267: 'argument': conversion from 'size_t' to 'GLsizei', possible loss of data
+  g3d_st_12_win.vcxproj -> D:\Patryk\Julka projekt 3d\openGl\x64\Debug\g3d_st_12_win.exe
